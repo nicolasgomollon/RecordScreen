@@ -43,6 +43,7 @@
 		DA5C722A16977ED700623135 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722916977ED700623135 /* AVFoundation.framework */; };
 		DA5C722D16977EED00623135 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722B16977EED00623135 /* CoreMedia.framework */; };
 		DA5C722E16977EED00623135 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722C16977EED00623135 /* CoreVideo.framework */; };
+		DA5C72301697849500623135 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722F1697849500623135 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		DA5C722916977ED700623135 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DA5C722B16977EED00623135 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DA5C722C16977EED00623135 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		DA5C722F1697849500623135 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				DA5C722A16977ED700623135 /* AVFoundation.framework in Frameworks */,
 				DA5C722D16977EED00623135 /* CoreMedia.framework in Frameworks */,
 				DA5C722E16977EED00623135 /* CoreVideo.framework in Frameworks */,
+				DA5C72301697849500623135 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +135,7 @@
 				DA5C722916977ED700623135 /* AVFoundation.framework */,
 				DA5C722B16977EED00623135 /* CoreMedia.framework */,
 				DA5C722C16977EED00623135 /* CoreVideo.framework */,
+				DA5C722F1697849500623135 /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
