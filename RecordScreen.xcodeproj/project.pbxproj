@@ -10,22 +10,39 @@
 		DA5C71921697038500623135 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C71911697038500623135 /* UIKit.framework */; };
 		DA5C71941697038500623135 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C71931697038500623135 /* Foundation.framework */; };
 		DA5C71961697038500623135 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C71951697038500623135 /* CoreGraphics.framework */; };
-		DA5C719C1697038500623135 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA5C719A1697038500623135 /* InfoPlist.strings */; };
-		DA5C719E1697038500623135 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C719D1697038500623135 /* main.m */; };
-		DA5C71A21697038600623135 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C71A11697038600623135 /* AppDelegate.m */; };
-		DA5C71A41697038600623135 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71A31697038600623135 /* Default.png */; };
-		DA5C71A61697038600623135 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71A51697038600623135 /* Default@2x.png */; };
-		DA5C71A81697038600623135 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71A71697038600623135 /* Default-568h@2x.png */; };
-		DA5C71AB1697038600623135 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C71AA1697038600623135 /* FirstViewController.m */; };
-		DA5C71AD1697038600623135 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71AC1697038600623135 /* first.png */; };
-		DA5C71AF1697038600623135 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71AE1697038600623135 /* first@2x.png */; };
-		DA5C71B21697038600623135 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C71B11697038600623135 /* SecondViewController.m */; };
-		DA5C71B41697038600623135 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71B31697038600623135 /* second.png */; };
-		DA5C71B61697038600623135 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71B51697038600623135 /* second@2x.png */; };
-		DA5C71B91697038600623135 /* FirstViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71B71697038600623135 /* FirstViewController_iPhone.xib */; };
-		DA5C71BC1697038600623135 /* FirstViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71BA1697038600623135 /* FirstViewController_iPad.xib */; };
-		DA5C71BF1697038600623135 /* SecondViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71BD1697038600623135 /* SecondViewController_iPhone.xib */; };
-		DA5C71C21697038600623135 /* SecondViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71C01697038600623135 /* SecondViewController_iPad.xib */; };
+		DA5C71F4169704BC00623135 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C71CA169704BC00623135 /* AppDelegate.m */; };
+		DA5C71F5169704BC00623135 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C71CC169704BC00623135 /* RecordViewController.m */; };
+		DA5C71F7169704BC00623135 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C71D0169704BC00623135 /* main.m */; };
+		DA5C71F8169704BC00623135 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71D4169704BC00623135 /* Default-568h@2x.png */; };
+		DA5C71F9169704BC00623135 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71D5169704BC00623135 /* Default.png */; };
+		DA5C71FA169704BC00623135 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71D6169704BC00623135 /* Default@2x.png */; };
+		DA5C71FB169704BC00623135 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71D7169704BC00623135 /* Icon.png */; };
+		DA5C71FC169704BC00623135 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71D8169704BC00623135 /* Icon@2x.png */; };
+		DA5C71FD169704BC00623135 /* Icon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71D9169704BC00623135 /* Icon~ipad.png */; };
+		DA5C71FE169704BC00623135 /* Icon~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71DA169704BC00623135 /* Icon~ipad@2x.png */; };
+		DA5C71FF169704BC00623135 /* arches.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71DC169704BC00623135 /* arches.png */; };
+		DA5C7200169704BC00623135 /* arches@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71DD169704BC00623135 /* arches@2x.png */; };
+		DA5C7201169704BC00623135 /* archive-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71DE169704BC00623135 /* archive-button-highlighted.png */; };
+		DA5C7202169704BC00623135 /* archive-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71DF169704BC00623135 /* archive-button-highlighted@2x.png */; };
+		DA5C7203169704BC00623135 /* archive-button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E0169704BC00623135 /* archive-button.png */; };
+		DA5C7204169704BC00623135 /* archive-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E1169704BC00623135 /* archive-button@2x.png */; };
+		DA5C7207169704BC00623135 /* nav-background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E4169704BC00623135 /* nav-background.png */; };
+		DA5C7208169704BC00623135 /* nav-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E5169704BC00623135 /* nav-background@2x.png */; };
+		DA5C7209169704BC00623135 /* RecordButton-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E6169704BC00623135 /* RecordButton-Disabled.png */; };
+		DA5C720A169704BC00623135 /* RecordButton-Disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E7169704BC00623135 /* RecordButton-Disabled@2x.png */; };
+		DA5C720B169704BC00623135 /* RecordButton-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E8169704BC00623135 /* RecordButton-Normal.png */; };
+		DA5C720C169704BC00623135 /* RecordButton-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E9169704BC00623135 /* RecordButton-Normal@2x.png */; };
+		DA5C720D169704BC00623135 /* RecordButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71EA169704BC00623135 /* RecordButton-Pressed.png */; };
+		DA5C720E169704BC00623135 /* RecordButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71EB169704BC00623135 /* RecordButton-Pressed@2x.png */; };
+		DA5C7215169704BC00623135 /* RecordScreen-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */; };
+		DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C721F1697086B00623135 /* RecordingsViewController.m */; };
+		DA5C722516977AF300623135 /* TabBar-Record.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722116977AF300623135 /* TabBar-Record.png */; };
+		DA5C722616977AF300623135 /* TabBar-Record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722216977AF300623135 /* TabBar-Record@2x.png */; };
+		DA5C722716977AF300623135 /* TabBar-Recordings.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722316977AF300623135 /* TabBar-Recordings.png */; };
+		DA5C722816977AF300623135 /* TabBar-Recordings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722416977AF300623135 /* TabBar-Recordings@2x.png */; };
+		DA5C722A16977ED700623135 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722916977ED700623135 /* AVFoundation.framework */; };
+		DA5C722D16977EED00623135 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722B16977EED00623135 /* CoreMedia.framework */; };
+		DA5C722E16977EED00623135 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722C16977EED00623135 /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,27 +50,43 @@
 		DA5C71911697038500623135 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA5C71931697038500623135 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA5C71951697038500623135 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		DA5C71991697038500623135 /* RecordScreen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RecordScreen-Info.plist"; sourceTree = "<group>"; };
-		DA5C719B1697038500623135 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DA5C719D1697038500623135 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DA5C719F1697038600623135 /* RecordScreen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RecordScreen-Prefix.pch"; sourceTree = "<group>"; };
-		DA5C71A01697038600623135 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		DA5C71A11697038600623135 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DA5C71A31697038600623135 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		DA5C71A51697038600623135 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		DA5C71A71697038600623135 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DA5C71A91697038600623135 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		DA5C71AA1697038600623135 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		DA5C71AC1697038600623135 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		DA5C71AE1697038600623135 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		DA5C71B01697038600623135 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		DA5C71B11697038600623135 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		DA5C71B31697038600623135 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		DA5C71B51697038600623135 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		DA5C71B81697038600623135 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController_iPhone.xib; sourceTree = "<group>"; };
-		DA5C71BB1697038600623135 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController_iPad.xib; sourceTree = "<group>"; };
-		DA5C71BE1697038600623135 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController_iPhone.xib; sourceTree = "<group>"; };
-		DA5C71C11697038600623135 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController_iPad.xib; sourceTree = "<group>"; };
+		DA5C71C9169704BC00623135 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DA5C71CA169704BC00623135 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DA5C71CB169704BC00623135 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		DA5C71CC169704BC00623135 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		DA5C71D0169704BC00623135 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DA5C71D1169704BC00623135 /* RecordScreen-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RecordScreen-Prefix.pch"; sourceTree = "<group>"; };
+		DA5C71D4169704BC00623135 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DA5C71D5169704BC00623135 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DA5C71D6169704BC00623135 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		DA5C71D7169704BC00623135 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		DA5C71D8169704BC00623135 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		DA5C71D9169704BC00623135 /* Icon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~ipad.png"; sourceTree = "<group>"; };
+		DA5C71DA169704BC00623135 /* Icon~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~ipad@2x.png"; sourceTree = "<group>"; };
+		DA5C71DC169704BC00623135 /* arches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arches.png; sourceTree = "<group>"; };
+		DA5C71DD169704BC00623135 /* arches@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arches@2x.png"; sourceTree = "<group>"; };
+		DA5C71DE169704BC00623135 /* archive-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archive-button-highlighted.png"; sourceTree = "<group>"; };
+		DA5C71DF169704BC00623135 /* archive-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archive-button-highlighted@2x.png"; sourceTree = "<group>"; };
+		DA5C71E0169704BC00623135 /* archive-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archive-button.png"; sourceTree = "<group>"; };
+		DA5C71E1169704BC00623135 /* archive-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archive-button@2x.png"; sourceTree = "<group>"; };
+		DA5C71E4169704BC00623135 /* nav-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-background.png"; sourceTree = "<group>"; };
+		DA5C71E5169704BC00623135 /* nav-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-background@2x.png"; sourceTree = "<group>"; };
+		DA5C71E6169704BC00623135 /* RecordButton-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Disabled.png"; sourceTree = "<group>"; };
+		DA5C71E7169704BC00623135 /* RecordButton-Disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Disabled@2x.png"; sourceTree = "<group>"; };
+		DA5C71E8169704BC00623135 /* RecordButton-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Normal.png"; sourceTree = "<group>"; };
+		DA5C71E9169704BC00623135 /* RecordButton-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Normal@2x.png"; sourceTree = "<group>"; };
+		DA5C71EA169704BC00623135 /* RecordButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Pressed.png"; sourceTree = "<group>"; };
+		DA5C71EB169704BC00623135 /* RecordButton-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Pressed@2x.png"; sourceTree = "<group>"; };
+		DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RecordScreen-Info.plist"; sourceTree = "<group>"; };
+		DA5C721E1697086B00623135 /* RecordingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsViewController.h; sourceTree = "<group>"; };
+		DA5C721F1697086B00623135 /* RecordingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsViewController.m; sourceTree = "<group>"; };
+		DA5C722116977AF300623135 /* TabBar-Record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Record.png"; sourceTree = "<group>"; };
+		DA5C722216977AF300623135 /* TabBar-Record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Record@2x.png"; sourceTree = "<group>"; };
+		DA5C722316977AF300623135 /* TabBar-Recordings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Recordings.png"; sourceTree = "<group>"; };
+		DA5C722416977AF300623135 /* TabBar-Recordings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Recordings@2x.png"; sourceTree = "<group>"; };
+		DA5C722916977ED700623135 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DA5C722B16977EED00623135 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		DA5C722C16977EED00623135 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +97,9 @@
 				DA5C71921697038500623135 /* UIKit.framework in Frameworks */,
 				DA5C71941697038500623135 /* Foundation.framework in Frameworks */,
 				DA5C71961697038500623135 /* CoreGraphics.framework in Frameworks */,
+				DA5C722A16977ED700623135 /* AVFoundation.framework in Frameworks */,
+				DA5C722D16977EED00623135 /* CoreMedia.framework in Frameworks */,
+				DA5C722E16977EED00623135 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +129,9 @@
 				DA5C71911697038500623135 /* UIKit.framework */,
 				DA5C71931697038500623135 /* Foundation.framework */,
 				DA5C71951697038500623135 /* CoreGraphics.framework */,
+				DA5C722916977ED700623135 /* AVFoundation.framework */,
+				DA5C722B16977EED00623135 /* CoreMedia.framework */,
+				DA5C722C16977EED00623135 /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,37 +139,82 @@
 		DA5C71971697038500623135 /* RecordScreen */ = {
 			isa = PBXGroup;
 			children = (
-				DA5C71A01697038600623135 /* AppDelegate.h */,
-				DA5C71A11697038600623135 /* AppDelegate.m */,
-				DA5C71A91697038600623135 /* FirstViewController.h */,
-				DA5C71AA1697038600623135 /* FirstViewController.m */,
-				DA5C71AC1697038600623135 /* first.png */,
-				DA5C71AE1697038600623135 /* first@2x.png */,
-				DA5C71B01697038600623135 /* SecondViewController.h */,
-				DA5C71B11697038600623135 /* SecondViewController.m */,
-				DA5C71B31697038600623135 /* second.png */,
-				DA5C71B51697038600623135 /* second@2x.png */,
-				DA5C71B71697038600623135 /* FirstViewController_iPhone.xib */,
-				DA5C71BA1697038600623135 /* FirstViewController_iPad.xib */,
-				DA5C71BD1697038600623135 /* SecondViewController_iPhone.xib */,
-				DA5C71C01697038600623135 /* SecondViewController_iPad.xib */,
-				DA5C71981697038500623135 /* Supporting Files */,
+				DA5C71C8169704BC00623135 /* Classes */,
+				DA5C71CF169704BC00623135 /* Other Sources */,
+				DA5C71D2169704BC00623135 /* Resources */,
 			);
 			path = RecordScreen;
 			sourceTree = "<group>";
 		};
-		DA5C71981697038500623135 /* Supporting Files */ = {
+		DA5C71C8169704BC00623135 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DA5C71991697038500623135 /* RecordScreen-Info.plist */,
-				DA5C719A1697038500623135 /* InfoPlist.strings */,
-				DA5C719D1697038500623135 /* main.m */,
-				DA5C719F1697038600623135 /* RecordScreen-Prefix.pch */,
-				DA5C71A31697038600623135 /* Default.png */,
-				DA5C71A51697038600623135 /* Default@2x.png */,
-				DA5C71A71697038600623135 /* Default-568h@2x.png */,
+				DA5C71C9169704BC00623135 /* AppDelegate.h */,
+				DA5C71CA169704BC00623135 /* AppDelegate.m */,
+				DA5C71CB169704BC00623135 /* RecordViewController.h */,
+				DA5C71CC169704BC00623135 /* RecordViewController.m */,
+				DA5C721E1697086B00623135 /* RecordingsViewController.h */,
+				DA5C721F1697086B00623135 /* RecordingsViewController.m */,
 			);
-			name = "Supporting Files";
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA5C71CF169704BC00623135 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C71D0169704BC00623135 /* main.m */,
+				DA5C71D1169704BC00623135 /* RecordScreen-Prefix.pch */,
+			);
+			path = "Other Sources";
+			sourceTree = SOURCE_ROOT;
+		};
+		DA5C71D2169704BC00623135 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C71D3169704BC00623135 /* Artwork */,
+				DA5C71DB169704BC00623135 /* Images */,
+				DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA5C71D3169704BC00623135 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C71D4169704BC00623135 /* Default-568h@2x.png */,
+				DA5C71D5169704BC00623135 /* Default.png */,
+				DA5C71D6169704BC00623135 /* Default@2x.png */,
+				DA5C71D7169704BC00623135 /* Icon.png */,
+				DA5C71D8169704BC00623135 /* Icon@2x.png */,
+				DA5C71D9169704BC00623135 /* Icon~ipad.png */,
+				DA5C71DA169704BC00623135 /* Icon~ipad@2x.png */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
+		DA5C71DB169704BC00623135 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C71DC169704BC00623135 /* arches.png */,
+				DA5C71DD169704BC00623135 /* arches@2x.png */,
+				DA5C71DE169704BC00623135 /* archive-button-highlighted.png */,
+				DA5C71DF169704BC00623135 /* archive-button-highlighted@2x.png */,
+				DA5C71E0169704BC00623135 /* archive-button.png */,
+				DA5C71E1169704BC00623135 /* archive-button@2x.png */,
+				DA5C71E4169704BC00623135 /* nav-background.png */,
+				DA5C71E5169704BC00623135 /* nav-background@2x.png */,
+				DA5C71E6169704BC00623135 /* RecordButton-Disabled.png */,
+				DA5C71E7169704BC00623135 /* RecordButton-Disabled@2x.png */,
+				DA5C71E8169704BC00623135 /* RecordButton-Normal.png */,
+				DA5C71E9169704BC00623135 /* RecordButton-Normal@2x.png */,
+				DA5C71EA169704BC00623135 /* RecordButton-Pressed.png */,
+				DA5C71EB169704BC00623135 /* RecordButton-Pressed@2x.png */,
+				DA5C722116977AF300623135 /* TabBar-Record.png */,
+				DA5C722216977AF300623135 /* TabBar-Record@2x.png */,
+				DA5C722316977AF300623135 /* TabBar-Recordings.png */,
+				DA5C722416977AF300623135 /* TabBar-Recordings@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,18 +268,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA5C719C1697038500623135 /* InfoPlist.strings in Resources */,
-				DA5C71A41697038600623135 /* Default.png in Resources */,
-				DA5C71A61697038600623135 /* Default@2x.png in Resources */,
-				DA5C71A81697038600623135 /* Default-568h@2x.png in Resources */,
-				DA5C71AD1697038600623135 /* first.png in Resources */,
-				DA5C71AF1697038600623135 /* first@2x.png in Resources */,
-				DA5C71B41697038600623135 /* second.png in Resources */,
-				DA5C71B61697038600623135 /* second@2x.png in Resources */,
-				DA5C71B91697038600623135 /* FirstViewController_iPhone.xib in Resources */,
-				DA5C71BC1697038600623135 /* FirstViewController_iPad.xib in Resources */,
-				DA5C71BF1697038600623135 /* SecondViewController_iPhone.xib in Resources */,
-				DA5C71C21697038600623135 /* SecondViewController_iPad.xib in Resources */,
+				DA5C71F8169704BC00623135 /* Default-568h@2x.png in Resources */,
+				DA5C71F9169704BC00623135 /* Default.png in Resources */,
+				DA5C71FA169704BC00623135 /* Default@2x.png in Resources */,
+				DA5C71FB169704BC00623135 /* Icon.png in Resources */,
+				DA5C71FC169704BC00623135 /* Icon@2x.png in Resources */,
+				DA5C71FD169704BC00623135 /* Icon~ipad.png in Resources */,
+				DA5C71FE169704BC00623135 /* Icon~ipad@2x.png in Resources */,
+				DA5C71FF169704BC00623135 /* arches.png in Resources */,
+				DA5C7200169704BC00623135 /* arches@2x.png in Resources */,
+				DA5C7201169704BC00623135 /* archive-button-highlighted.png in Resources */,
+				DA5C7202169704BC00623135 /* archive-button-highlighted@2x.png in Resources */,
+				DA5C7203169704BC00623135 /* archive-button.png in Resources */,
+				DA5C7204169704BC00623135 /* archive-button@2x.png in Resources */,
+				DA5C7207169704BC00623135 /* nav-background.png in Resources */,
+				DA5C7208169704BC00623135 /* nav-background@2x.png in Resources */,
+				DA5C7209169704BC00623135 /* RecordButton-Disabled.png in Resources */,
+				DA5C720A169704BC00623135 /* RecordButton-Disabled@2x.png in Resources */,
+				DA5C720B169704BC00623135 /* RecordButton-Normal.png in Resources */,
+				DA5C720C169704BC00623135 /* RecordButton-Normal@2x.png in Resources */,
+				DA5C720D169704BC00623135 /* RecordButton-Pressed.png in Resources */,
+				DA5C720E169704BC00623135 /* RecordButton-Pressed@2x.png in Resources */,
+				DA5C7215169704BC00623135 /* RecordScreen-Info.plist in Resources */,
+				DA5C722516977AF300623135 /* TabBar-Record.png in Resources */,
+				DA5C722616977AF300623135 /* TabBar-Record@2x.png in Resources */,
+				DA5C722716977AF300623135 /* TabBar-Recordings.png in Resources */,
+				DA5C722816977AF300623135 /* TabBar-Recordings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,57 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA5C719E1697038500623135 /* main.m in Sources */,
-				DA5C71A21697038600623135 /* AppDelegate.m in Sources */,
-				DA5C71AB1697038600623135 /* FirstViewController.m in Sources */,
-				DA5C71B21697038600623135 /* SecondViewController.m in Sources */,
+				DA5C71F4169704BC00623135 /* AppDelegate.m in Sources */,
+				DA5C71F5169704BC00623135 /* RecordViewController.m in Sources */,
+				DA5C71F7169704BC00623135 /* main.m in Sources */,
+				DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		DA5C719A1697038500623135 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA5C719B1697038500623135 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DA5C71B71697038600623135 /* FirstViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA5C71B81697038600623135 /* en */,
-			);
-			name = FirstViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		DA5C71BA1697038600623135 /* FirstViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA5C71BB1697038600623135 /* en */,
-			);
-			name = FirstViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
-		DA5C71BD1697038600623135 /* SecondViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA5C71BE1697038600623135 /* en */,
-			);
-			name = SecondViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		DA5C71C01697038600623135 /* SecondViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA5C71C11697038600623135 /* en */,
-			);
-			name = SecondViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DA5C71C31697038600623135 /* Debug */ = {
@@ -284,7 +339,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -309,7 +364,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,8 +376,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RecordScreen/RecordScreen-Prefix.pch";
-				INFOPLIST_FILE = "RecordScreen/RecordScreen-Info.plist";
+				GCC_PREFIX_HEADER = "Other Sources/RecordScreen-Prefix.pch";
+				INFOPLIST_FILE = "Resources/RecordScreen-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -332,8 +387,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RecordScreen/RecordScreen-Prefix.pch";
-				INFOPLIST_FILE = "RecordScreen/RecordScreen-Info.plist";
+				GCC_PREFIX_HEADER = "Other Sources/RecordScreen-Prefix.pch";
+				INFOPLIST_FILE = "Resources/RecordScreen-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -358,6 +413,7 @@
 				DA5C71C71697038600623135 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

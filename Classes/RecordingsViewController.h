@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  RecordingsViewController.h
 //  RecordScreen
 //
 //  Created by Nicolas Gomollon on 1/4/13.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface SecondViewController : UIViewController
+@interface RecordingsViewController : UITableViewController
 
 @end
