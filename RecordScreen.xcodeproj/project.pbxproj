@@ -89,6 +89,28 @@
 		DA5C722B16977EED00623135 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DA5C722C16977EED00623135 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		DA5C722F1697849500623135 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DA5C7233169785BE00623135 /* CoreSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreSurface.h; sourceTree = "<group>"; };
+		DA5C7235169785BE00623135 /* IOSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSurface.h; sourceTree = "<group>"; };
+		DA5C7236169785BE00623135 /* IOSurfaceAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSurfaceAPI.h; sourceTree = "<group>"; };
+		DA5C7237169785BE00623135 /* IOSurfaceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSurfaceBase.h; sourceTree = "<group>"; };
+		DA5C7239169785BE00623135 /* IOBSD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOBSD.h; sourceTree = "<group>"; };
+		DA5C723A169785BE00623135 /* IOCFBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOCFBundle.h; sourceTree = "<group>"; };
+		DA5C723B169785BE00623135 /* IOCFPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOCFPlugIn.h; sourceTree = "<group>"; };
+		DA5C723C169785BE00623135 /* IOCFSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOCFSerialize.h; sourceTree = "<group>"; };
+		DA5C723D169785BE00623135 /* IOCFUnserialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOCFUnserialize.h; sourceTree = "<group>"; };
+		DA5C723E169785BE00623135 /* IOCFURLAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOCFURLAccess.h; sourceTree = "<group>"; };
+		DA5C723F169785BE00623135 /* IODataQueueClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IODataQueueClient.h; sourceTree = "<group>"; };
+		DA5C7240169785BE00623135 /* IODataQueueShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IODataQueueShared.h; sourceTree = "<group>"; };
+		DA5C7241169785BE00623135 /* IOKitKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitKeys.h; sourceTree = "<group>"; };
+		DA5C7242169785BE00623135 /* IOKitLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitLib.h; sourceTree = "<group>"; };
+		DA5C7243169785BE00623135 /* iokitmig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iokitmig.h; sourceTree = "<group>"; };
+		DA5C7244169785BE00623135 /* IOKitServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitServer.h; sourceTree = "<group>"; };
+		DA5C7245169785BE00623135 /* IOMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOMessage.h; sourceTree = "<group>"; };
+		DA5C7246169785BE00623135 /* IOReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOReturn.h; sourceTree = "<group>"; };
+		DA5C7247169785BE00623135 /* IOSharedLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSharedLock.h; sourceTree = "<group>"; };
+		DA5C7248169785BE00623135 /* IOTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOTypes.h; sourceTree = "<group>"; };
+		DA5C7249169785BE00623135 /* OSMessageNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMessageNotification.h; sourceTree = "<group>"; };
+		DA5C724A169785BE00623135 /* IOMobileFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOMobileFrameBuffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +167,7 @@
 			children = (
 				DA5C71C8169704BC00623135 /* Classes */,
 				DA5C71CF169704BC00623135 /* Other Sources */,
+				DA5C7231169785BE00623135 /* PrivateFrameworks */,
 				DA5C71D2169704BC00623135 /* Resources */,
 			);
 			path = RecordScreen;
@@ -219,6 +242,59 @@
 				DA5C722416977AF300623135 /* TabBar-Recordings@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		DA5C7231169785BE00623135 /* PrivateFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C7232169785BE00623135 /* CoreSurface */,
+				DA5C7234169785BE00623135 /* Headers */,
+				DA5C7238169785BE00623135 /* IOKit */,
+				DA5C724A169785BE00623135 /* IOMobileFrameBuffer.h */,
+			);
+			path = PrivateFrameworks;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA5C7232169785BE00623135 /* CoreSurface */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C7233169785BE00623135 /* CoreSurface.h */,
+			);
+			path = CoreSurface;
+			sourceTree = "<group>";
+		};
+		DA5C7234169785BE00623135 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C7235169785BE00623135 /* IOSurface.h */,
+				DA5C7236169785BE00623135 /* IOSurfaceAPI.h */,
+				DA5C7237169785BE00623135 /* IOSurfaceBase.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		DA5C7238169785BE00623135 /* IOKit */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C7239169785BE00623135 /* IOBSD.h */,
+				DA5C723A169785BE00623135 /* IOCFBundle.h */,
+				DA5C723B169785BE00623135 /* IOCFPlugIn.h */,
+				DA5C723C169785BE00623135 /* IOCFSerialize.h */,
+				DA5C723D169785BE00623135 /* IOCFUnserialize.h */,
+				DA5C723E169785BE00623135 /* IOCFURLAccess.h */,
+				DA5C723F169785BE00623135 /* IODataQueueClient.h */,
+				DA5C7240169785BE00623135 /* IODataQueueShared.h */,
+				DA5C7241169785BE00623135 /* IOKitKeys.h */,
+				DA5C7242169785BE00623135 /* IOKitLib.h */,
+				DA5C7243169785BE00623135 /* iokitmig.h */,
+				DA5C7244169785BE00623135 /* IOKitServer.h */,
+				DA5C7245169785BE00623135 /* IOMessage.h */,
+				DA5C7246169785BE00623135 /* IOReturn.h */,
+				DA5C7247169785BE00623135 /* IOSharedLock.h */,
+				DA5C7248169785BE00623135 /* IOTypes.h */,
+				DA5C7249169785BE00623135 /* OSMessageNotification.h */,
+			);
+			path = IOKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +408,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SDK_DIR)/System/Library/PrivateFrameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -343,8 +420,19 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "PrivateFrameworks/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOSurface,
+					"-framework",
+					CoreSurface,
+					"-framework",
+					IOMobileFramebuffer,
+					"-framework",
+					IOKit,
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,12 +452,24 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SDK_DIR)/System/Library/PrivateFrameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "PrivateFrameworks/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOSurface,
+					"-framework",
+					CoreSurface,
+					"-framework",
+					IOMobileFramebuffer,
+					"-framework",
+					IOKit,
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
