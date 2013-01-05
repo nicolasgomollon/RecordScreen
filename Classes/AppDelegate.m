@@ -64,6 +64,24 @@
 										   [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.5f)], UITextAttributeTextShadowOffset,
 										   [UIColor whiteColor], UITextAttributeTextColor,
 										   nil]];
+	
+	// Navigation button
+	NSDictionary *barButtonTitleTextAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+												  [UIFont fontWithName:@"MyriadPro-Bold" size:14.0f], UITextAttributeFont,
+												  [UIColor colorWithWhite:0.0f alpha:0.5f], UITextAttributeTextShadowColor,
+												  [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.5f)], UITextAttributeTextShadowOffset,
+												  nil];
+	UIBarButtonItem *barButton = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
+	[barButton setTitlePositionAdjustment:UIOffsetMake(0.0f, 4.0f) forBarMetrics:UIBarMetricsDefault];
+	[barButton setTitleTextAttributes:barButtonTitleTextAttributes forState:UIControlStateNormal];
+	[barButton setTitleTextAttributes:barButtonTitleTextAttributes forState:UIControlStateHighlighted];
+	[barButton setBackgroundImage:[[UIImage imageNamed:@"nav-button"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[barButton setBackgroundImage:[[UIImage imageNamed:@"nav-button-highlighted"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+	
+	// Navigation back button
+	[barButton setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, 1.5f) forBarMetrics:UIBarMetricsDefault];
+	[barButton setBackButtonBackgroundImage:[[UIImage imageNamed:@"nav-back"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[barButton setBackButtonBackgroundImage:[[UIImage imageNamed:@"nav-back-highlighted"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
 }
 
 @end
