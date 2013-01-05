@@ -11,6 +11,8 @@
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
+	#import <IOMobileFrameBuffer.h>
+	#import <IOSurface.h>
 	#import "NSTimer+Blocks.h"
 	#import "MTStatusBarOverlay.h"
 	#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-//#import "MTStatusBarOverlay.h"
 
 @interface RecordViewController : UIViewController <AVAudioRecorderDelegate> {
 	UIButton *recordButton;
