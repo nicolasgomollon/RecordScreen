@@ -48,6 +48,10 @@
 		<string>MyriadPro-Bold.otf</string>
 		<string>MyriadPro-Regular.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
