@@ -12,6 +12,12 @@ I cleaned up the code, made the switch to ARC, and I also managed to fix a few t
 I also took the chance to play around with designs and rethink the interface from scratch. I tried to keep the app as minimal as possible. I'm still learning about design, so if you think you have something better, feel free to make a Pull Request! :)
 
 
+## Screenshots
+
+* <img alt="Screenshot 1" width="320" height="568" src="http://f.cl.ly/items/080e1V2R1L0Z3U2g0K0E/photo+1.PNG" />&nbsp;&nbsp;&nbsp;<img alt="Screenshot 2" width="320" height="568" src="http://f.cl.ly/items/2H3R1y2j1a13403c1H3S/photo+2.PNG" />
+* <img alt="Screenshot 3" width="320" height="568" src="http://f.cl.ly/items/1E460U0g0u41061F3g10/photo+3.PNG" />&nbsp;&nbsp;&nbsp;<img alt="Screenshot 4" width="320" height="568" src="http://f.cl.ly/items/0v023W462m1Q2q3Y1g3U/photo+4.PNG" />
+
+
 ## Why isn't this on the App Store?
 
 This app is not—cannot—be submitted to the App Store due to the use of private APIs. Apple prohibits developers from submitting apps that use any API that is not public.
@@ -51,5 +57,4 @@ RecordScreen is released under the MIT License.
 
 
 
-Too bad this app will never have the chance to be published on the App Store! :/
-_(Let me know if you do manage to, though!)_
+Too bad this app will never have the chance to be published on the App Store! _(Let me know if you do manage to, though!)_
