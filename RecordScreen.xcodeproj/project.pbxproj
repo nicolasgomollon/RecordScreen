@@ -55,6 +55,7 @@
 		DA5C726A16979C8C00623135 /* RecordButton2-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C726016979C8C00623135 /* RecordButton2-Normal@2x.png */; };
 		DA5C726B16979C8C00623135 /* RecordButton2-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */; };
 		DA5C726E1697BAE900623135 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C726D1697BAE800623135 /* MTStatusBarOverlay.m */; };
+		DA5C72751697BD1F00623135 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72741697BD1F00623135 /* NSTimer+Blocks.m */; };
 		DA5C727E1697E78F00623135 /* nav-back-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C72761697E78F00623135 /* nav-back-highlighted.png */; };
 		DA5C727F1697E78F00623135 /* nav-back-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C72771697E78F00623135 /* nav-back-highlighted@2x.png */; };
 		DA5C72801697E78F00623135 /* nav-back.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C72781697E78F00623135 /* nav-back.png */; };
@@ -142,6 +143,8 @@
 		DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Pressed@2x.png"; sourceTree = "<group>"; };
 		DA5C726C1697BAE800623135 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Vendor/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = SOURCE_ROOT; };
 		DA5C726D1697BAE800623135 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Vendor/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = SOURCE_ROOT; };
+		DA5C72731697BD1F00623135 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		DA5C72741697BD1F00623135 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		DA5C72761697E78F00623135 /* nav-back-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back-highlighted.png"; sourceTree = "<group>"; };
 		DA5C72771697E78F00623135 /* nav-back-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back-highlighted@2x.png"; sourceTree = "<group>"; };
 		DA5C72781697E78F00623135 /* nav-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back.png"; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 				DA5C71CF169704BC00623135 /* Other Sources */,
 				DA5C7231169785BE00623135 /* PrivateFrameworks */,
 				DA5C71D2169704BC00623135 /* Resources */,
+				DA5C72711697BD1F00623135 /* Categories */,
 				DA5C72701697BAF600623135 /* Vendor */,
 			);
 			path = RecordScreen;
@@ -380,6 +384,23 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		DA5C72711697BD1F00623135 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C72721697BD1F00623135 /* NSTimer+Blocks */,
+			);
+			path = Categories;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA5C72721697BD1F00623135 /* NSTimer+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C72731697BD1F00623135 /* NSTimer+Blocks.h */,
+				DA5C72741697BD1F00623135 /* NSTimer+Blocks.m */,
+			);
+			path = "NSTimer+Blocks";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -490,6 +511,7 @@
 				DA5C71F7169704BC00623135 /* main.m in Sources */,
 				DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */,
 				DA5C726E1697BAE900623135 /* MTStatusBarOverlay.m in Sources */,
+				DA5C72751697BD1F00623135 /* NSTimer+Blocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
