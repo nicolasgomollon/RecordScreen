@@ -54,6 +54,7 @@
 		DA5C726916979C8C00623135 /* RecordButton2-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725F16979C8C00623135 /* RecordButton2-Normal.png */; };
 		DA5C726A16979C8C00623135 /* RecordButton2-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C726016979C8C00623135 /* RecordButton2-Normal@2x.png */; };
 		DA5C726B16979C8C00623135 /* RecordButton2-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */; };
+		DA5C726E1697BAE900623135 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C726D1697BAE800623135 /* MTStatusBarOverlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,8 @@
 		DA5C725F16979C8C00623135 /* RecordButton2-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Normal.png"; sourceTree = "<group>"; };
 		DA5C726016979C8C00623135 /* RecordButton2-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Normal@2x.png"; sourceTree = "<group>"; };
 		DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Pressed@2x.png"; sourceTree = "<group>"; };
+		DA5C726C1697BAE800623135 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Vendor/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = SOURCE_ROOT; };
+		DA5C726D1697BAE800623135 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Vendor/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,7 @@
 				DA5C71CF169704BC00623135 /* Other Sources */,
 				DA5C7231169785BE00623135 /* PrivateFrameworks */,
 				DA5C71D2169704BC00623135 /* Resources */,
+				DA5C72701697BAF600623135 /* Vendor */,
 			);
 			path = RecordScreen;
 			sourceTree = "<group>";
@@ -335,6 +339,23 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		DA5C726F1697BAEF00623135 /* MTStatusBarOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C726C1697BAE800623135 /* MTStatusBarOverlay.h */,
+				DA5C726D1697BAE800623135 /* MTStatusBarOverlay.m */,
+			);
+			name = MTStatusBarOverlay;
+			sourceTree = "<group>";
+		};
+		DA5C72701697BAF600623135 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C726F1697BAEF00623135 /* MTStatusBarOverlay */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -436,6 +457,7 @@
 				DA5C71F5169704BC00623135 /* RecordViewController.m in Sources */,
 				DA5C71F7169704BC00623135 /* main.m in Sources */,
 				DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */,
+				DA5C726E1697BAE900623135 /* MTStatusBarOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
