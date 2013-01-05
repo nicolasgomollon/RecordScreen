@@ -228,16 +228,28 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Navigation logic may go here. Create and push another view controller.
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-// TODO: Make sure to pass the selected recording.
-	MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:[self inDocumentsDirectory:@"video.mp4"]]];
+	
+	NSArray *contentsOfDocumentsDirectory = [self contentsOfDocumentsDirectory];
+	NSDictionary *file = contentsOfDocumentsDirectory[indexPath.row];
+	NSString *filePath = file[@"filePath"];
+	NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+	
+	MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:fileURL];
 	[moviePlayerController.moviePlayer prepareToPlay];
 	[self presentMoviePlayerViewControllerAnimated:moviePlayerController];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-// TODO: Make sure to pass the selected recording.
-	UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:[self inDocumentsDirectory:@"video.mp4"]]];
-	[interactionController presentOptionsMenuFromRect:[tableView cellForRowAtIndexPath:indexPath].frame inView:self.view animated:YES];
+	NSArray *contentsOfDocumentsDirectory = [self contentsOfDocumentsDirectory];
+	NSDictionary *file = contentsOfDocumentsDirectory[indexPath.row];
+	NSString *filePath = file[@"filePath"];
+	NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+	
+	NSArray *activityItems = @[fileURL];
+	
+	UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+	[activityViewController setExcludedActivityTypes:@[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint]];
+	[self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 @end
