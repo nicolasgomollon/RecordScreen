@@ -7,8 +7,6 @@ RecordScreen is a universal iPhone and iPad application that allows you to recor
 
 I wanted to play around with screen recording capabilities, so I created a fresh Xcode project and used [RecordMyScreen](https://github.com/coolstar/RecordMyScreen) as a starting point.
 
-I cleaned up the code, made the switch to ARC, and I also managed to fix a few things, such as keeping other apps from stopping the screen recording, using a faster frame rate, and saving screenshots as PNG images instead of JPEG images. This increases the recording quality, speeds up the encoding process at the end, and I think it even reduces the file size.
-
 I also took the chance to play around with designs and rethink the interface from scratch. I tried to keep the app as minimal as possible. I'm still learning about design, so if you think you have something better, feel free to make a Pull Request! :)
 
 
@@ -20,7 +18,7 @@ I also took the chance to play around with designs and rethink the interface fro
 
 ## Why isn't this on the App Store?
 
-This app is not—cannot—be submitted to the App Store due to the use of private APIs. Apple prohibits developers from submitting apps that use any API that is not public.
+This app cannot be submitted to the App Store due to the use of private APIs. Apple prohibits developers from submitting apps that use any API that is not public.
 
 
 ## Getting Started
@@ -35,7 +33,6 @@ Run the following commands to get started:
 ## Known Issues
 
 * **The app does not work on the iPad, even though it is universal.** I've only played around with the app on my iPhone, so I haven't looked into it yet.
-* **Recordings contain black rectangles in the top right portion of the screen.** I'm not sure why this happens, but it was an issue with [RecordMyScreen](https://github.com/coolstar/RecordMyScreen) as well.
 
 
 ## Sources
