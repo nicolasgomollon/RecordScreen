@@ -64,6 +64,7 @@
 		DA5C72831697E78F00623135 /* nav-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727B1697E78F00623135 /* nav-button-highlighted@2x.png */; };
 		DA5C72841697E78F00623135 /* nav-button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727C1697E78F00623135 /* nav-button.png */; };
 		DA5C72851697E78F00623135 /* nav-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727D1697E78F00623135 /* nav-button@2x.png */; };
+		DA5C72891697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72881697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m */; };
 		DA5C728B1697E9D200623135 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C728A1697E9D200623135 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,8 @@
 		DA5C727B1697E78F00623135 /* nav-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-button-highlighted@2x.png"; sourceTree = "<group>"; };
 		DA5C727C1697E78F00623135 /* nav-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-button.png"; sourceTree = "<group>"; };
 		DA5C727D1697E78F00623135 /* nav-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-button@2x.png"; sourceTree = "<group>"; };
+		DA5C72871697E88100623135 /* NGTableViewCellDeleteConfirmationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGTableViewCellDeleteConfirmationControl.h; sourceTree = "<group>"; };
+		DA5C72881697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGTableViewCellDeleteConfirmationControl.m; sourceTree = "<group>"; };
 		DA5C728A1697E9D200623135 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -384,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5C726F1697BAEF00623135 /* MTStatusBarOverlay */,
+				DA5C72861697E88100623135 /* NGTableViewCellDeleteConfirmationControl */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -404,6 +408,16 @@
 			);
 			path = "NSTimer+Blocks";
 			sourceTree = "<group>";
+		};
+		DA5C72861697E88100623135 /* NGTableViewCellDeleteConfirmationControl */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C72871697E88100623135 /* NGTableViewCellDeleteConfirmationControl.h */,
+				DA5C72881697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m */,
+			);
+			name = NGTableViewCellDeleteConfirmationControl;
+			path = Vendor/NGTableViewCellDeleteConfirmationControl;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -516,6 +530,7 @@
 				DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */,
 				DA5C726E1697BAE900623135 /* MTStatusBarOverlay.m in Sources */,
 				DA5C72751697BD1F00623135 /* NSTimer+Blocks.m in Sources */,
+				DA5C72891697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
