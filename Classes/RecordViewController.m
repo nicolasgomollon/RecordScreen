@@ -333,8 +333,8 @@
 	[self.videoWriter startWriting];
 	[self.videoWriter startSessionAtSourceTime:kCMTimeZero];
 	
+// TODO: Hhmmm, seems to be crashing right here on the iPad.
 	NSParameterAssert(self.pixelBufferAdaptor.pixelBufferPool != NULL);
-	
 }
 
 - (void)finishEncoding {
