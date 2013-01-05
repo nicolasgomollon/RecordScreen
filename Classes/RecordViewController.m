@@ -10,16 +10,24 @@
 
 @implementation RecordViewController
 
-@synthesize recordButton, statusBarOverlay, recordingTimer, shotTimer, recordStartDate, shotDirectory, shotCount, audioRecorder;
+@synthesize recordButton, statusBarOverlay;
+@synthesize isRecording, recordingTimer, recordStartDate, audioRecorder;
+@synthesize surface, bytesPerRow, width, height;
+@synthesize video_queue, kbps, fps, pixelBufferLock, videoWriter, videoWriterInput, pixelBufferAdaptor;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+	self = [super init];
 	if (self) {
 		// Custom initialization
 		[self setTitle:@"RecordScreen"];
 		[self.tabBarItem setImage:[UIImage imageNamed:@"TabBar-Record.png"]];
-		self.shotDirectory = [self inDocumentsDirectory:@"Shots"];
+		
+		self.pixelBufferLock = [NSLock new];
+		
+		self.video_queue = dispatch_queue_create("video_queue", DISPATCH_QUEUE_SERIAL);
+		self.fps = 24;
+		self.kbps = 5000;
 	}
 	return self;
 }
@@ -93,13 +101,10 @@
 
 - (void)startRecording {
 	NSString *audioPath = [self inDocumentsDirectory:@"audio.caf"];
-	
 	[[NSFileManager defaultManager] removeItemAtPath:audioPath error:nil];
-	[[NSFileManager defaultManager] removeItemAtPath:self.shotDirectory error:nil];
-	[[NSFileManager defaultManager] createDirectoryAtPath:self.shotDirectory withIntermediateDirectories:YES attributes:nil error:nil];
 	
+	if (!self.videoWriter) [self setupVideoContext];
 	self.recordStartDate = [NSDate date];
-	self.shotCount = 0;
 	
 	NSError *sessionError = nil;
 	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDuckOthers error:&sessionError];
@@ -125,109 +130,58 @@
 		[self.recordButton setTitle:timeString forState:UIControlStateNormal];
 	} repeats:YES];
 	
-	self.shotTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(grabShot) userInfo:nil repeats:YES];
-}
-
-- (void)grabShot {
-	@autoreleasepool {
-		IOMobileFramebufferConnection connect;
-		kern_return_t result;
-		CoreSurfaceBufferRef screenSurface = NULL;
+	self.isRecording = YES;
+	
+	// Capture loop
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		int targetFPS = self.fps;
+		int msBeforeNextCapture = 1000 / targetFPS;
 		
-		io_service_t framebufferService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("AppleH1CLCD"));
-		if (!framebufferService)
-			framebufferService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("AppleM2CLCD"));
-		if (!framebufferService)
-			framebufferService = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("AppleCLCD"));
+		struct timeval lastCapture, currentTime, startTime;
+		lastCapture.tv_sec = 0;
+		lastCapture.tv_usec = 0;
 		
-		result = IOMobileFramebufferOpen(framebufferService, mach_task_self(), 0, &connect);
+		// Recording start time
+		gettimeofday(&startTime, NULL);
+		startTime.tv_usec /= 1000;
 		
-		result = IOMobileFramebufferGetLayerDefaultSurface(connect, 0, &screenSurface);
+		int lastFrame = -1;
+		while (self.isRecording) {
+			// Time passed since last capture
+			gettimeofday(&currentTime, NULL);
+			
+			// Convert to milliseconds to avoid overflows
+			currentTime.tv_usec /= 1000;
+			
+			long int diff = (currentTime.tv_usec + (1000 * currentTime.tv_sec)) - (lastCapture.tv_usec + (1000 * lastCapture.tv_sec));
+			
+			if (diff >= msBeforeNextCapture) {
+				// Time since start
+				long int msSinceStart = (currentTime.tv_usec + (1000 * currentTime.tv_sec)) - (startTime.tv_usec + (1000 * startTime.tv_sec));
+				
+				int frameNumber = msSinceStart / msBeforeNextCapture;
+				CMTime presentTime;
+				presentTime = CMTimeMake(frameNumber, targetFPS);
+				
+				NSParameterAssert(frameNumber != lastFrame);
+				lastFrame = frameNumber;
+				
+				[self captureShot:presentTime];
+				lastCapture = currentTime;
+			}
+		}
 		
-		uint32_t aseed;
-		IOSurfaceLock(screenSurface, kIOSurfaceLockReadOnly, &aseed);
-		uint32_t width = IOSurfaceGetWidth(screenSurface);
-		uint32_t height = IOSurfaceGetHeight(screenSurface);
-		
-		CFMutableDictionaryRef dict;
-		int pitch = width * 4;
-		int size = 4 * width * height;
-		int bPE = 4;
-		char pixelFormat[4] = {'A','R','G','B'};
-		
-		CFNumberRef surfaceBytesPerRow, surfaceBytesPerElement, surfaceWidth, surfaceHeight, surfacePixelFormat, surfaceAllocSize;
-		
-		dict = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-		CFDictionarySetValue(dict, kIOSurfaceIsGlobal, kCFBooleanTrue);
-		
-		surfaceBytesPerRow = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &pitch);
-		CFDictionarySetValue(dict, kIOSurfaceBytesPerRow, surfaceBytesPerRow);
-		
-		surfaceBytesPerElement = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bPE);
-		CFDictionarySetValue(dict, kIOSurfaceBytesPerElement, surfaceBytesPerElement);
-		
-		surfaceWidth = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &width);
-		CFDictionarySetValue(dict, kIOSurfaceWidth, surfaceWidth);
-		
-		surfaceHeight = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &height);
-		CFDictionarySetValue(dict, kIOSurfaceHeight, surfaceHeight);
-		
-		surfacePixelFormat = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, pixelFormat);
-		CFDictionarySetValue(dict, kIOSurfacePixelFormat, surfacePixelFormat);
-		
-		surfaceAllocSize = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &size);
-		CFDictionarySetValue(dict, kIOSurfaceAllocSize, surfaceAllocSize);
-		
-		IOSurfaceRef destSurf = IOSurfaceCreate(dict);
-		CoreSurfaceAcceleratorRef outAcc;
-		CoreSurfaceAcceleratorCreate(NULL, 0, &outAcc);
-		
-		CFDictionaryRef ed = (__bridge CFDictionaryRef)[NSDictionary dictionaryWithObjectsAndKeys:nil];
-		CoreSurfaceAcceleratorTransferSurfaceWithSwap(outAcc, screenSurface, destSurf, ed);
-		
-		IOSurfaceUnlock(screenSurface, kIOSurfaceLockReadOnly, &aseed);
-		
-		CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, IOSurfaceGetBaseAddress(destSurf), (width * height * 4), NULL);
-		CGColorSpaceRef devicergb = CGColorSpaceCreateDeviceRGB();
-		
-		CGImageRef cgImage = CGImageCreate(width, height, 8, 8 * 4, IOSurfaceGetBytesPerRow(destSurf), devicergb, kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little, provider, NULL, YES, kCGRenderingIntentDefault);
-		UIImage *shot = [UIImage imageWithCGImage:cgImage];
-		
-		CGImageRelease(cgImage);
-		CGColorSpaceRelease(devicergb);
-		CGDataProviderRelease(provider);
-		
-		CFRelease(outAcc);
-		
-		CFRelease(surfaceBytesPerRow);		//Don't keep these in the RAM. They're poisonous!
-		CFRelease(surfaceBytesPerElement);
-		CFRelease(surfaceWidth);
-		CFRelease(surfaceHeight);
-		CFRelease(surfacePixelFormat);
-		CFRelease(surfaceAllocSize);
-		CFRelease(dict);
-		
-		IOServiceClose(framebufferService);	//Close those connections!
-		IOServiceClose(connect);
-		
-		NSString *shotName = [NSString stringWithFormat:@"%i.png", self.shotCount];
-		NSData *data = UIImagePNGRepresentation(shot);
-		[data writeToFile:[self.shotDirectory stringByAppendingPathComponent:shotName] atomically:YES];
-		
-		CFRelease(destSurf);
-		self.shotCount++;
-	}
+		dispatch_async(self.video_queue, ^{
+			[self finishEncoding];
+		});
+	});
 }
 
 - (void)stopRecording {
+	self.isRecording = NO;
+	
 	[self.recordingTimer invalidate];
 	self.recordingTimer = nil;
-	
-	[self.shotTimer invalidate];
-	self.shotTimer = nil;
-	
-	self.shotCount -= 1;
-	
 	[self.audioRecorder stop];
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
@@ -241,31 +195,14 @@
 	
 	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
 	dispatch_async(queue, ^{
-		NSLog(@"Start");
-		
-		NSString *firstShotPath = [self.shotDirectory stringByAppendingPathComponent:@"0.png"];
-		UIImage *firstShot = [UIImage imageWithContentsOfFile:firstShotPath];
-		CGSize size = firstShot.size;
-		
-		NSDate *currentDate = [NSDate date];
-		NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:self.recordStartDate];
-		
-		NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self inDocumentsDirectory:@""] error:nil];
-		NSString *videoName = [NSString stringWithFormat:@"ScreenRecording-%i.mp4", (documents.count - 2)];
-		NSString *videoPath = [self inDocumentsDirectory:videoName];
-		
-		[self encodeVideotoPath:videoPath size:size duration:timeInterval];
-		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[[NSFileManager defaultManager] removeItemAtPath:[self inDocumentsDirectory:@"audio.caf"] error:nil];
-			[[NSFileManager defaultManager] removeItemAtPath:self.shotDirectory error:nil];
 			
 			[self.recordButton setEnabled:YES];
+			[recordingsTabBarItem setEnabled:YES];
 			
 			[self.statusBarOverlay postImmediateFinishMessage:@"Saved Recording!" duration:2.0 animated:YES];
 			[self.statusBarOverlay setProgress:1.0];
-			
-			[recordingsTabBarItem setEnabled:YES];
 		});
 	});
 	
@@ -275,92 +212,140 @@
 
 
 #pragma mark -
-#pragma mark Video Encoding Methods
+#pragma mark Capturing Methods
 
-- (void)encodeVideotoPath:(NSString *)path size:(CGSize)size duration:(int)duration {
-	NSError *error = nil;
-	AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:[NSURL fileURLWithPath:path] fileType:AVFileTypeMPEG4 error:&error];
-	
-	NSParameterAssert(videoWriter);
-	NSDictionary *videoSettings = @{AVVideoCodecKey : AVVideoCodecH264, AVVideoWidthKey : @(size.width), AVVideoHeightKey : @(size.height)};
-	AVAssetWriterInput *videoWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
-	
-	AVAssetWriterInputPixelBufferAdaptor *pixelBufferAdaptor = [AVAssetWriterInputPixelBufferAdaptor assetWriterInputPixelBufferAdaptorWithAssetWriterInput:videoWriterInput sourcePixelBufferAttributes:nil];
-	NSParameterAssert(videoWriterInput);
-	
-	NSParameterAssert([videoWriter canAddInput:videoWriterInput]);
-	[videoWriter addInput:videoWriterInput];
-	
-	[videoWriter startWriting];
-	[videoWriter startSessionAtSourceTime:kCMTimeZero];
-	
-	
-	CVPixelBufferRef buffer = NULL;
-	int i = 0;
-	
-	NSString *shotName = [NSString stringWithFormat:@"%i.png", i];
-	NSString *shotPath = [self.shotDirectory stringByAppendingPathComponent:shotName];
-	UIImage *shot = [UIImage imageWithContentsOfFile:shotPath];
-	
-	buffer = [self pixelBufferFromCGImage:[shot CGImage] size:size];
-	CVPixelBufferPoolCreatePixelBuffer(NULL, pixelBufferAdaptor.pixelBufferPool, &buffer);
-	
-	while (videoWriterInput.readyForMoreMediaData && i < self.shotCount) {
-		@autoreleasepool {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				float encodeProgress = (float)i / (float)self.shotCount;
-				[self.statusBarOverlay setProgress:encodeProgress];
-			});
-			
-			CMTime frameTime = CMTimeMake(1, 1);
-			CMTime lastTime = CMTimeMake(i, 10);
-			CMTime presentTime = CMTimeAdd(lastTime, frameTime);
-			
-			NSString *imageName = [NSString stringWithFormat:@"%i.png", i];
-			NSString *imagePath = [self.shotDirectory stringByAppendingPathComponent:imageName];
-			UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
-			
-			buffer = [self pixelBufferFromCGImage:[image CGImage] size:size];
-			[pixelBufferAdaptor appendPixelBuffer:buffer withPresentationTime:presentTime];
-			
-			CVPixelBufferRelease(buffer);
-		}
-		i++;
-	}
-	
-	[videoWriterInput markAsFinished];
-	[videoWriter finishWriting];
-	
-	CVPixelBufferPoolRelease(pixelBufferAdaptor.pixelBufferPool);
-	
-	NSLog(@"Done");
+- (void)createScreenSurface {
+	unsigned pixelFormat = 0x42475241;	// 'ARGB';
+	int bytesPerElement = 4;
+	self.bytesPerRow = (bytesPerElement * self.width);
+	NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+								@YES, kIOSurfaceIsGlobal,
+								@(bytesPerElement), kIOSurfaceBytesPerElement,
+								@(self.bytesPerRow), kIOSurfaceBytesPerRow,
+								@(self.width), kIOSurfaceWidth,
+								@(self.height), kIOSurfaceHeight,
+								@(pixelFormat), kIOSurfacePixelFormat,
+								@(self.bytesPerRow * self.height), kIOSurfaceAllocSize,
+								nil];
+	self.surface = IOSurfaceCreate((__bridge CFDictionaryRef)properties);
 }
 
-- (CVPixelBufferRef)pixelBufferFromCGImage:(CGImageRef)image size:(CGSize)size {
-	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @YES, kCVPixelBufferCGImageCompatibilityKey,
-							 @YES, kCVPixelBufferCGBitmapContextCompatibilityKey,
-							 nil];
+- (void)captureShot:(CMTime)frameTime {
+	if (!self.surface) [self createScreenSurface];
 	
-	CVPixelBufferRef pxbuffer = NULL;
-	CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, size.width, size.height, kCVPixelFormatType_32ARGB, (__bridge CFDictionaryRef)options, &pxbuffer);
+	IOSurfaceLock(self.surface, 0, nil);
+	CARenderServerRenderDisplay(0, CFSTR("LCD"), self.surface, 0, 0);
+	IOSurfaceUnlock(self.surface, 0, 0);
 	
-	NSParameterAssert(status == kCVReturnSuccess && pxbuffer != NULL);
-	CVPixelBufferLockBaseAddress(pxbuffer, 0);
-	void *pxdata = CVPixelBufferGetBaseAddress(pxbuffer);
+	void *baseAddr = IOSurfaceGetBaseAddress(self.surface);
+	int totalBytes = self.bytesPerRow * self.height;
+	void *rawData = malloc(totalBytes);
+	memcpy(rawData, baseAddr, totalBytes);
 	
-	NSParameterAssert(pxdata != NULL);
-	CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
-	CGContextRef context = CGBitmapContextCreate(pxdata, size.width, size.height, 8, 4 * size.width, rgbColorSpace, kCGImageAlphaNoneSkipFirst);
+	dispatch_async(dispatch_get_main_queue(), ^{
+		CVPixelBufferRef pixelBuffer = NULL;
+		if (!self.pixelBufferAdaptor.pixelBufferPool){
+			NSLog(@"skipping frame: %lld", frameTime.value);
+			free(rawData);
+			return;
+		}
+		
+		NSParameterAssert(self.pixelBufferAdaptor.pixelBufferPool != NULL);
+		[self.pixelBufferLock lock];
+		CVPixelBufferPoolCreatePixelBuffer (kCFAllocatorDefault, self.pixelBufferAdaptor.pixelBufferPool, &pixelBuffer);
+		[self.pixelBufferLock unlock];
+		NSParameterAssert(pixelBuffer != NULL);
+		
+		// Unlock pixel buffer data
+		CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+		void *pixelData = CVPixelBufferGetBaseAddress(pixelBuffer);
+		NSParameterAssert(pixelData != NULL);
+		
+		// Copy over raw image data and free
+		memcpy(pixelData, rawData, totalBytes);
+		free(rawData);
+		
+		// Unlock pixel buffer data
+		CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+		
+		dispatch_async(self.video_queue, ^{
+			while (!self.videoWriterInput.readyForMoreMediaData) usleep(1000);
+			
+			[self.pixelBufferLock lock];
+			[self.pixelBufferAdaptor appendPixelBuffer:pixelBuffer withPresentationTime:frameTime];
+			CVPixelBufferRelease(pixelBuffer);
+			[self.pixelBufferLock unlock];
+		});
+	});
+}
+
+
+#pragma mark -
+#pragma mark Encoding Methods
+
+- (void)setupVideoContext {
+	CGRect screenRect = [UIScreen mainScreen].bounds;
+	float scale = [UIScreen mainScreen].scale;
+	self.width = screenRect.size.width * scale;
+	self.height = screenRect.size.height * scale;
 	
-	NSParameterAssert(context);
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, CGImageGetWidth(image), CGImageGetHeight(image)), image);
-	CGColorSpaceRelease(rgbColorSpace);
-	CGContextRelease(context);
+	NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self inDocumentsDirectory:@""] error:nil];
+	NSString *videoName = [NSString stringWithFormat:@"ScreenRecording-%i.mp4", documents.count];
+	NSString *videoPath = [self inDocumentsDirectory:videoName];
 	
-	CVPixelBufferUnlockBaseAddress(pxbuffer, 0);
+	NSError *error = nil;
+	self.videoWriter = [[AVAssetWriter alloc] initWithURL:[NSURL fileURLWithPath:videoPath] fileType:AVFileTypeMPEG4 error:&error];
+	if (error) {
+		NSLog(@"error: %@", error);
+		return;
+	}
 	
-	return pxbuffer;
+	NSParameterAssert(self.videoWriter);
+	
+	NSDictionary *compressionProperties = @{AVVideoAverageBitRateKey : @(self.kbps * 1000), AVVideoMaxKeyFrameIntervalKey : @(self.fps), AVVideoProfileLevelKey : AVVideoProfileLevelH264Main41};
+	
+	NSDictionary *outputSettings = @{AVVideoCodecKey : AVVideoCodecH264, AVVideoWidthKey : @(self.width), AVVideoHeightKey : @(self.height), AVVideoCompressionPropertiesKey : compressionProperties};
+	
+	NSParameterAssert([self.videoWriter canApplyOutputSettings:outputSettings forMediaType:AVMediaTypeVideo]);
+	
+	self.videoWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:outputSettings];
+	
+	NSParameterAssert(self.videoWriterInput);
+	NSParameterAssert([self.videoWriter canAddInput:self.videoWriterInput]);
+	[self.videoWriter addInput:self.videoWriterInput];
+	
+	NSDictionary *bufferAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+									  @(kCVPixelFormatType_32BGRA), kCVPixelBufferPixelFormatTypeKey,
+									  @(self.width), kCVPixelBufferWidthKey,
+									  @(self.height), kCVPixelBufferHeightKey,
+									  kCFAllocatorDefault, kCVPixelBufferMemoryAllocatorKey,
+									  nil];
+	
+	self.pixelBufferAdaptor = [AVAssetWriterInputPixelBufferAdaptor assetWriterInputPixelBufferAdaptorWithAssetWriterInput:self.videoWriterInput
+																							   sourcePixelBufferAttributes:bufferAttributes];
+	
+	// FPS
+	self.videoWriterInput.mediaTimeScale = self.fps;
+	self.videoWriter.movieTimeScale = self.fps;
+	
+	// Start a session:
+	[self.videoWriterInput setExpectsMediaDataInRealTime:YES];
+	[self.videoWriter startWriting];
+	[self.videoWriter startSessionAtSourceTime:kCMTimeZero];
+	
+	NSParameterAssert(self.pixelBufferAdaptor.pixelBufferPool != NULL);
+	
+}
+
+- (void)finishEncoding {
+	[self.videoWriterInput markAsFinished];
+	[self.videoWriter finishWriting];
+	
+	self.videoWriter = nil;
+	self.videoWriterInput = nil;
+	self.pixelBufferAdaptor = nil;
+	
+	NSLog(@"Done");
 }
 
 
