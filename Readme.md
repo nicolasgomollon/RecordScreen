@@ -30,6 +30,16 @@ Run the following commands to get started:
     $ rake setup
 
 
+## Technical Specifications
+
+_TIP: Check out the [iOS Support Matrix](https://www.dropbox.com/s/8ex254t1pscshdp/iOS_Support_Matrix_V14_A3.pdf) for help._
+
+1. ARMv7 device (A5 recommended, _may_ work on iPod touch 2G but untested)
+2. iOS 5 or higher (iOS 6 recommended, _may_ work on iOS 4)
+3. [iOS Developer Account](https://developer.apple.com/devcenter/ios/index.action) **OR** jailbroken device to install
+4. Xcode 4.4.1 or higher
+
+
 ## Known Issues
 
 * **The app does not work on the iPad, even though it is universal.** I've only played around with the app on my iPhone, so I haven't looked into it yet.
