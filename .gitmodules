@@ -1,0 +1,3 @@
+[submodule "Vendor/MTStatusBarOverlay"]
+	path = Vendor/MTStatusBarOverlay
+	url = https://github.com/myell0w/MTStatusBarOverlay
