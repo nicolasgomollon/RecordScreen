@@ -25,6 +25,7 @@
 	self.tabBarController.viewControllers = @[recordNavigationController, recordingsNavigationController];
 	
 	self.window.rootViewController = self.tabBarController;
+	[self applyStylesheet];
 	[self.window makeKeyAndVisible];
 	
 	return YES;
@@ -50,6 +51,19 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)applyStylesheet {
+	// Navigation bar
+	UINavigationBar *navigationBar = [UINavigationBar appearance];
+	[navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-background"] forBarMetrics:UIBarMetricsDefault];
+	[navigationBar setTitleVerticalPositionAdjustment:2.0f forBarMetrics:UIBarMetricsDefault];
+	[navigationBar setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:
+										   [UIFont fontWithName:@"MyriadPro-Bold" size:24.0f], UITextAttributeFont,
+										   [UIColor colorWithWhite:0.0f alpha:0.5f], UITextAttributeTextShadowColor,
+										   [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.5f)], UITextAttributeTextShadowOffset,
+										   [UIColor whiteColor], UITextAttributeTextColor,
+										   nil]];
 }
 
 @end

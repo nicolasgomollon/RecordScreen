@@ -10,6 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 //#import "MTStatusBarOverlay.h"
 
-@interface RecordViewController : UIViewController <AVAudioRecorderDelegate>
+@interface RecordViewController : UIViewController <AVAudioRecorderDelegate> {
+	UIButton *recordButton;
+}
+
+@property (nonatomic, strong) UIButton *recordButton;
 
 @end

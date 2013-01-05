@@ -28,12 +28,6 @@
 		DA5C7204169704BC00623135 /* archive-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E1169704BC00623135 /* archive-button@2x.png */; };
 		DA5C7207169704BC00623135 /* nav-background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E4169704BC00623135 /* nav-background.png */; };
 		DA5C7208169704BC00623135 /* nav-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E5169704BC00623135 /* nav-background@2x.png */; };
-		DA5C7209169704BC00623135 /* RecordButton-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E6169704BC00623135 /* RecordButton-Disabled.png */; };
-		DA5C720A169704BC00623135 /* RecordButton-Disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E7169704BC00623135 /* RecordButton-Disabled@2x.png */; };
-		DA5C720B169704BC00623135 /* RecordButton-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E8169704BC00623135 /* RecordButton-Normal.png */; };
-		DA5C720C169704BC00623135 /* RecordButton-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E9169704BC00623135 /* RecordButton-Normal@2x.png */; };
-		DA5C720D169704BC00623135 /* RecordButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71EA169704BC00623135 /* RecordButton-Pressed.png */; };
-		DA5C720E169704BC00623135 /* RecordButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71EB169704BC00623135 /* RecordButton-Pressed@2x.png */; };
 		DA5C7215169704BC00623135 /* RecordScreen-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */; };
 		DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C721F1697086B00623135 /* RecordingsViewController.m */; };
 		DA5C722516977AF300623135 /* TabBar-Record.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722116977AF300623135 /* TabBar-Record.png */; };
@@ -44,6 +38,22 @@
 		DA5C722D16977EED00623135 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722B16977EED00623135 /* CoreMedia.framework */; };
 		DA5C722E16977EED00623135 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722C16977EED00623135 /* CoreVideo.framework */; };
 		DA5C72301697849500623135 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C722F1697849500623135 /* MediaPlayer.framework */; };
+		DA5C72501697924200623135 /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724C1697924200623135 /* Gotham-Bold.otf */; };
+		DA5C72511697924200623135 /* Gotham-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724D1697924200623135 /* Gotham-BoldItalic.otf */; };
+		DA5C72521697924200623135 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724E1697924200623135 /* Gotham-Book.otf */; };
+		DA5C72531697924200623135 /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA5C724F1697924200623135 /* Gotham-BookItalic.otf */; };
+		DA5C72561697934B00623135 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA5C72541697934B00623135 /* MyriadPro-Bold.otf */; };
+		DA5C72571697934B00623135 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DA5C72551697934B00623135 /* MyriadPro-Regular.otf */; };
+		DA5C726216979C8C00623135 /* RecordButton-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725816979C8C00623135 /* RecordButton-Disabled.png */; };
+		DA5C726316979C8C00623135 /* RecordButton-Disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725916979C8C00623135 /* RecordButton-Disabled@2x.png */; };
+		DA5C726416979C8C00623135 /* RecordButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725A16979C8C00623135 /* RecordButton-Pressed.png */; };
+		DA5C726516979C8C00623135 /* RecordButton1-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725B16979C8C00623135 /* RecordButton1-Normal.png */; };
+		DA5C726616979C8C00623135 /* RecordButton1-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725C16979C8C00623135 /* RecordButton1-Normal@2x.png */; };
+		DA5C726716979C8C00623135 /* RecordButton1-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725D16979C8C00623135 /* RecordButton1-Pressed.png */; };
+		DA5C726816979C8C00623135 /* RecordButton1-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725E16979C8C00623135 /* RecordButton1-Pressed@2x.png */; };
+		DA5C726916979C8C00623135 /* RecordButton2-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C725F16979C8C00623135 /* RecordButton2-Normal.png */; };
+		DA5C726A16979C8C00623135 /* RecordButton2-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C726016979C8C00623135 /* RecordButton2-Normal@2x.png */; };
+		DA5C726B16979C8C00623135 /* RecordButton2-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,12 +82,6 @@
 		DA5C71E1169704BC00623135 /* archive-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archive-button@2x.png"; sourceTree = "<group>"; };
 		DA5C71E4169704BC00623135 /* nav-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-background.png"; sourceTree = "<group>"; };
 		DA5C71E5169704BC00623135 /* nav-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-background@2x.png"; sourceTree = "<group>"; };
-		DA5C71E6169704BC00623135 /* RecordButton-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Disabled.png"; sourceTree = "<group>"; };
-		DA5C71E7169704BC00623135 /* RecordButton-Disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Disabled@2x.png"; sourceTree = "<group>"; };
-		DA5C71E8169704BC00623135 /* RecordButton-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Normal.png"; sourceTree = "<group>"; };
-		DA5C71E9169704BC00623135 /* RecordButton-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Normal@2x.png"; sourceTree = "<group>"; };
-		DA5C71EA169704BC00623135 /* RecordButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Pressed.png"; sourceTree = "<group>"; };
-		DA5C71EB169704BC00623135 /* RecordButton-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Pressed@2x.png"; sourceTree = "<group>"; };
 		DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RecordScreen-Info.plist"; sourceTree = "<group>"; };
 		DA5C721E1697086B00623135 /* RecordingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingsViewController.h; sourceTree = "<group>"; };
 		DA5C721F1697086B00623135 /* RecordingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingsViewController.m; sourceTree = "<group>"; };
@@ -111,6 +115,22 @@
 		DA5C7248169785BE00623135 /* IOTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOTypes.h; sourceTree = "<group>"; };
 		DA5C7249169785BE00623135 /* OSMessageNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMessageNotification.h; sourceTree = "<group>"; };
 		DA5C724A169785BE00623135 /* IOMobileFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOMobileFrameBuffer.h; sourceTree = "<group>"; };
+		DA5C724C1697924200623135 /* Gotham-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold.otf"; sourceTree = "<group>"; };
+		DA5C724D1697924200623135 /* Gotham-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BoldItalic.otf"; sourceTree = "<group>"; };
+		DA5C724E1697924200623135 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
+		DA5C724F1697924200623135 /* Gotham-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BookItalic.otf"; sourceTree = "<group>"; };
+		DA5C72541697934B00623135 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		DA5C72551697934B00623135 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
+		DA5C725816979C8C00623135 /* RecordButton-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Disabled.png"; sourceTree = "<group>"; };
+		DA5C725916979C8C00623135 /* RecordButton-Disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Disabled@2x.png"; sourceTree = "<group>"; };
+		DA5C725A16979C8C00623135 /* RecordButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton-Pressed.png"; sourceTree = "<group>"; };
+		DA5C725B16979C8C00623135 /* RecordButton1-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton1-Normal.png"; sourceTree = "<group>"; };
+		DA5C725C16979C8C00623135 /* RecordButton1-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton1-Normal@2x.png"; sourceTree = "<group>"; };
+		DA5C725D16979C8C00623135 /* RecordButton1-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton1-Pressed.png"; sourceTree = "<group>"; };
+		DA5C725E16979C8C00623135 /* RecordButton1-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton1-Pressed@2x.png"; sourceTree = "<group>"; };
+		DA5C725F16979C8C00623135 /* RecordButton2-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Normal.png"; sourceTree = "<group>"; };
+		DA5C726016979C8C00623135 /* RecordButton2-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Normal@2x.png"; sourceTree = "<group>"; };
+		DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton2-Pressed@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5C71D3169704BC00623135 /* Artwork */,
+				DA5C724B1697924200623135 /* Fonts */,
 				DA5C71DB169704BC00623135 /* Images */,
 				DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */,
 			);
@@ -230,12 +251,16 @@
 				DA5C71E1169704BC00623135 /* archive-button@2x.png */,
 				DA5C71E4169704BC00623135 /* nav-background.png */,
 				DA5C71E5169704BC00623135 /* nav-background@2x.png */,
-				DA5C71E6169704BC00623135 /* RecordButton-Disabled.png */,
-				DA5C71E7169704BC00623135 /* RecordButton-Disabled@2x.png */,
-				DA5C71E8169704BC00623135 /* RecordButton-Normal.png */,
-				DA5C71E9169704BC00623135 /* RecordButton-Normal@2x.png */,
-				DA5C71EA169704BC00623135 /* RecordButton-Pressed.png */,
-				DA5C71EB169704BC00623135 /* RecordButton-Pressed@2x.png */,
+				DA5C725816979C8C00623135 /* RecordButton-Disabled.png */,
+				DA5C725916979C8C00623135 /* RecordButton-Disabled@2x.png */,
+				DA5C725A16979C8C00623135 /* RecordButton-Pressed.png */,
+				DA5C725B16979C8C00623135 /* RecordButton1-Normal.png */,
+				DA5C725C16979C8C00623135 /* RecordButton1-Normal@2x.png */,
+				DA5C725D16979C8C00623135 /* RecordButton1-Pressed.png */,
+				DA5C725E16979C8C00623135 /* RecordButton1-Pressed@2x.png */,
+				DA5C725F16979C8C00623135 /* RecordButton2-Normal.png */,
+				DA5C726016979C8C00623135 /* RecordButton2-Normal@2x.png */,
+				DA5C726116979C8C00623135 /* RecordButton2-Pressed@2x.png */,
 				DA5C722116977AF300623135 /* TabBar-Record.png */,
 				DA5C722216977AF300623135 /* TabBar-Record@2x.png */,
 				DA5C722316977AF300623135 /* TabBar-Recordings.png */,
@@ -295,6 +320,19 @@
 				DA5C7249169785BE00623135 /* OSMessageNotification.h */,
 			);
 			path = IOKit;
+			sourceTree = "<group>";
+		};
+		DA5C724B1697924200623135 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C724C1697924200623135 /* Gotham-Bold.otf */,
+				DA5C724D1697924200623135 /* Gotham-BoldItalic.otf */,
+				DA5C724E1697924200623135 /* Gotham-Book.otf */,
+				DA5C724F1697924200623135 /* Gotham-BookItalic.otf */,
+				DA5C72541697934B00623135 /* MyriadPro-Bold.otf */,
+				DA5C72551697934B00623135 /* MyriadPro-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,17 +401,27 @@
 				DA5C7204169704BC00623135 /* archive-button@2x.png in Resources */,
 				DA5C7207169704BC00623135 /* nav-background.png in Resources */,
 				DA5C7208169704BC00623135 /* nav-background@2x.png in Resources */,
-				DA5C7209169704BC00623135 /* RecordButton-Disabled.png in Resources */,
-				DA5C720A169704BC00623135 /* RecordButton-Disabled@2x.png in Resources */,
-				DA5C720B169704BC00623135 /* RecordButton-Normal.png in Resources */,
-				DA5C720C169704BC00623135 /* RecordButton-Normal@2x.png in Resources */,
-				DA5C720D169704BC00623135 /* RecordButton-Pressed.png in Resources */,
-				DA5C720E169704BC00623135 /* RecordButton-Pressed@2x.png in Resources */,
 				DA5C7215169704BC00623135 /* RecordScreen-Info.plist in Resources */,
 				DA5C722516977AF300623135 /* TabBar-Record.png in Resources */,
 				DA5C722616977AF300623135 /* TabBar-Record@2x.png in Resources */,
 				DA5C722716977AF300623135 /* TabBar-Recordings.png in Resources */,
 				DA5C722816977AF300623135 /* TabBar-Recordings@2x.png in Resources */,
+				DA5C72501697924200623135 /* Gotham-Bold.otf in Resources */,
+				DA5C72511697924200623135 /* Gotham-BoldItalic.otf in Resources */,
+				DA5C72521697924200623135 /* Gotham-Book.otf in Resources */,
+				DA5C72531697924200623135 /* Gotham-BookItalic.otf in Resources */,
+				DA5C72561697934B00623135 /* MyriadPro-Bold.otf in Resources */,
+				DA5C72571697934B00623135 /* MyriadPro-Regular.otf in Resources */,
+				DA5C726216979C8C00623135 /* RecordButton-Disabled.png in Resources */,
+				DA5C726316979C8C00623135 /* RecordButton-Disabled@2x.png in Resources */,
+				DA5C726416979C8C00623135 /* RecordButton-Pressed.png in Resources */,
+				DA5C726516979C8C00623135 /* RecordButton1-Normal.png in Resources */,
+				DA5C726616979C8C00623135 /* RecordButton1-Normal@2x.png in Resources */,
+				DA5C726716979C8C00623135 /* RecordButton1-Pressed.png in Resources */,
+				DA5C726816979C8C00623135 /* RecordButton1-Pressed@2x.png in Resources */,
+				DA5C726916979C8C00623135 /* RecordButton2-Normal.png in Resources */,
+				DA5C726A16979C8C00623135 /* RecordButton2-Normal@2x.png in Resources */,
+				DA5C726B16979C8C00623135 /* RecordButton2-Pressed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
