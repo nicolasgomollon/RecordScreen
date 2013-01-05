@@ -64,6 +64,7 @@
 		DA5C72831697E78F00623135 /* nav-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727B1697E78F00623135 /* nav-button-highlighted@2x.png */; };
 		DA5C72841697E78F00623135 /* nav-button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727C1697E78F00623135 /* nav-button.png */; };
 		DA5C72851697E78F00623135 /* nav-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727D1697E78F00623135 /* nav-button@2x.png */; };
+		DA5C728B1697E9D200623135 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C728A1697E9D200623135 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		DA5C727B1697E78F00623135 /* nav-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-button-highlighted@2x.png"; sourceTree = "<group>"; };
 		DA5C727C1697E78F00623135 /* nav-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-button.png"; sourceTree = "<group>"; };
 		DA5C727D1697E78F00623135 /* nav-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-button@2x.png"; sourceTree = "<group>"; };
+		DA5C728A1697E9D200623135 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				DA5C722D16977EED00623135 /* CoreMedia.framework in Frameworks */,
 				DA5C722E16977EED00623135 /* CoreVideo.framework in Frameworks */,
 				DA5C72301697849500623135 /* MediaPlayer.framework in Frameworks */,
+				DA5C728B1697E9D200623135 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +203,7 @@
 				DA5C722B16977EED00623135 /* CoreMedia.framework */,
 				DA5C722C16977EED00623135 /* CoreVideo.framework */,
 				DA5C722F1697849500623135 /* MediaPlayer.framework */,
+				DA5C728A1697E9D200623135 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

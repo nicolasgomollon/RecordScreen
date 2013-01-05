@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface RecordingsViewController : UITableViewController
+@interface RecordingsViewController : UITableViewController {
+	UILabel *footerLabel;
+}
+
+@property (nonatomic, strong) UILabel *footerLabel;
 
 @end

@@ -10,6 +10,8 @@
 
 @implementation RecordingsViewController
 
+@synthesize footerLabel;
+
 
 - (id)init {
 	self = [super init];
@@ -23,9 +25,21 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	// Do any additional setup after loading the view.
+	UIImage *archesPattern = [UIImage imageNamed:@"arches.png"];
+	UIColor *archesPatternColor = [UIColor colorWithPatternImage:archesPattern];
+	UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+	[backgroundView setBackgroundColor:archesPatternColor];
+	[self.tableView setBackgroundView:backgroundView];
  
 	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 	// self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[self.tableView reloadData];
+	[self refreshTableViewFooter];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,7 +74,7 @@
 		NSDate *lastModifiedDate = [fileAttributes objectForKey:NSFileModificationDate];
 		
 		if (error == nil)
-			[filesAndProperties addObject:@{@"path" : file, NSFileModificationDate : lastModifiedDate}];
+			[filesAndProperties addObject:@{@"fileName" : file, @"filePath" : filePath, NSFileModificationDate : lastModifiedDate}];
 	}
 	
 	// Sort using a block.
@@ -118,10 +132,10 @@
 
 - (NSString *)formattedLastModifiedDate:(NSDate *)lastModifiedDate {
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 	
-	NSString *lastModifiedString = [dateFormatter stringFromDate:lastModifiedDate];
+	NSString *lastModifiedString = [dateFormatter stringForObjectValue:lastModifiedDate];
 	return lastModifiedString;
 }
 
@@ -151,26 +165,34 @@
 	
 	NSArray *contentsOfDocumentsDirectory = [self contentsOfDocumentsDirectory];
 	NSDictionary *file = contentsOfDocumentsDirectory[indexPath.row];
-	NSString *filePath = file[@"path"];
+	NSString *filePath = file[@"filePath"];
 	
 	NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
 	NSInteger fileSize = [[fileAttributes objectForKey:NSFileSize] intValue];
 	NSDate *lastModifiedDate = [fileAttributes objectForKey:NSFileModificationDate];
 	
-	NSString *detailText = [NSString stringWithFormat:@"%@\t%@", [self formattedLastModifiedDate:lastModifiedDate], [self formattedFileSize:fileSize]];
+	NSString *detailText = [NSString stringWithFormat:@"%@ - %@", [self formattedLastModifiedDate:lastModifiedDate], [self formattedFileSize:fileSize]];
 	
-	[cell.textLabel setText:[filePath lastPathComponent]];
+	[cell.textLabel setText:file[@"fileName"]];
 	[cell.detailTextLabel setText:detailText];
 	
-	UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
-	[footerLabel setBackgroundColor:[UIColor clearColor]];
-	[footerLabel setFont:[UIFont systemFontOfSize:20.0f]];
-	[footerLabel setTextAlignment:UITextAlignmentCenter];
-	[footerLabel setTextColor:[UIColor grayColor]];
-	[footerLabel setText:[NSString stringWithFormat:@"%i Recordings - %@", [contentsOfDocumentsDirectory count], [self formattedFileSize:[self folderSize:[self inDocumentsDirectory:@""]]]]];
-	[tableView setTableFooterView:footerLabel];
-	
 	return cell;
+}
+
+- (void)refreshTableViewFooter {
+	NSArray *contentsOfDocumentsDirectory = [self contentsOfDocumentsDirectory];
+	NSString *totalSize = [self formattedFileSize:[self folderSize:[self inDocumentsDirectory:@""]]];
+	
+	if (self.footerLabel == nil) {
+		self.footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+		[self.footerLabel setBackgroundColor:[UIColor clearColor]];
+		[self.footerLabel setFont:[UIFont systemFontOfSize:20.0f]];
+		[self.footerLabel setTextAlignment:UITextAlignmentCenter];
+		[self.footerLabel setTextColor:[UIColor grayColor]];
+		[self.tableView setTableFooterView:self.footerLabel];
+	}
+	
+	[self.footerLabel setText:[NSString stringWithFormat:@"%i Recordings - %@", [contentsOfDocumentsDirectory count], totalSize]];
 }
 
 // Override to support conditional editing of the table view.
@@ -185,7 +207,7 @@
 		// Delete the row from the data source
 		NSArray *contentsOfDocumentsDirectory = [self contentsOfDocumentsDirectory];
 		NSDictionary *file = contentsOfDocumentsDirectory[indexPath.row];
-		NSString *filePath = file[@"path"];
+		NSString *filePath = file[@"filePath"];
 		
 		NSError *error = nil;
 		[[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
@@ -194,6 +216,8 @@
 			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
 		else
 			NSLog(@"Error removing item: %@", [error localizedDescription]);
+		
+		[self refreshTableViewFooter];
 	}
 }
 
