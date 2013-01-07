@@ -289,8 +289,16 @@
 - (void)setupVideoContext {
 	CGRect screenRect = [UIScreen mainScreen].bounds;
 	float scale = [UIScreen mainScreen].scale;
-	self.width = screenRect.size.width * scale;
-	self.height = screenRect.size.height * scale;
+	
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		// iPhone frame buffer is Portrait
+		self.width = screenRect.size.width * scale;
+		self.height = screenRect.size.height * scale;
+	} else {
+		// iPad frame buffer is Landscape
+		self.width = screenRect.size.height * scale;
+		self.height = screenRect.size.width * scale;
+	}
 	
 	NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self inDocumentsDirectory:@""] error:nil];
 	NSString *videoName = [NSString stringWithFormat:@"ScreenRecording-%i.mp4", documents.count];
