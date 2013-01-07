@@ -28,7 +28,6 @@
 		DA5C7204169704BC00623135 /* archive-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E1169704BC00623135 /* archive-button@2x.png */; };
 		DA5C7207169704BC00623135 /* nav-background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E4169704BC00623135 /* nav-background.png */; };
 		DA5C7208169704BC00623135 /* nav-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71E5169704BC00623135 /* nav-background@2x.png */; };
-		DA5C7215169704BC00623135 /* RecordScreen-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */; };
 		DA5C72201697086B00623135 /* RecordingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C721F1697086B00623135 /* RecordingsViewController.m */; };
 		DA5C722516977AF300623135 /* TabBar-Record.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722116977AF300623135 /* TabBar-Record.png */; };
 		DA5C722616977AF300623135 /* TabBar-Record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C722216977AF300623135 /* TabBar-Record@2x.png */; };
@@ -485,7 +484,6 @@
 				DA5C7204169704BC00623135 /* archive-button@2x.png in Resources */,
 				DA5C7207169704BC00623135 /* nav-background.png in Resources */,
 				DA5C7208169704BC00623135 /* nav-background@2x.png in Resources */,
-				DA5C7215169704BC00623135 /* RecordScreen-Info.plist in Resources */,
 				DA5C722516977AF300623135 /* TabBar-Record.png in Resources */,
 				DA5C722616977AF300623135 /* TabBar-Record@2x.png in Resources */,
 				DA5C722716977AF300623135 /* TabBar-Recordings.png in Resources */,
