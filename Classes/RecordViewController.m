@@ -107,7 +107,10 @@
 	self.recordStartDate = [NSDate date];
 	
 	NSError *sessionError = nil;
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDuckOthers error:&sessionError];
+	if ([[AVAudioSession sharedInstance] respondsToSelector:@selector(setCategory:withOptions:error:)])
+		[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDuckOthers error:&sessionError];
+	else
+		[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
 	[[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
 	
 	NSError *error = nil;
