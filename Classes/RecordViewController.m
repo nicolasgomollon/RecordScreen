@@ -156,11 +156,11 @@
 			// Convert to milliseconds to avoid overflows
 			currentTime.tv_usec /= 1000;
 			
-			long int diff = (currentTime.tv_usec + (1000 * currentTime.tv_sec)) - (lastCapture.tv_usec + (1000 * lastCapture.tv_sec));
+			unsigned long long diff = (currentTime.tv_usec + (1000 * currentTime.tv_sec)) - (lastCapture.tv_usec + (1000 * lastCapture.tv_sec));
 			
 			if (diff >= msBeforeNextCapture) {
 				// Time since start
-				long int msSinceStart = (currentTime.tv_usec + (1000 * currentTime.tv_sec)) - (startTime.tv_usec + (1000 * startTime.tv_sec));
+				unsigned long long msSinceStart = (currentTime.tv_usec + (1000 * currentTime.tv_sec)) - (startTime.tv_usec + (1000 * startTime.tv_sec));
 				
 				int frameNumber = msSinceStart / msBeforeNextCapture;
 				CMTime presentTime;
