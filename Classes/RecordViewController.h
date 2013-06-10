@@ -32,6 +32,8 @@ void CARenderServerRenderDisplay(kern_return_t a, CFStringRef b, IOSurfaceRef su
 	AVAssetWriter *videoWriter;
 	AVAssetWriterInput *videoWriterInput;
 	AVAssetWriterInputPixelBufferAdaptor *pixelBufferAdaptor;
+	
+	NSString *screenRecordingName;
 }
 
 @property (nonatomic, strong) UIButton *recordButton;
@@ -54,5 +56,7 @@ void CARenderServerRenderDisplay(kern_return_t a, CFStringRef b, IOSurfaceRef su
 @property (nonatomic, strong) AVAssetWriter *videoWriter;
 @property (nonatomic, strong) AVAssetWriterInput *videoWriterInput;
 @property (nonatomic, strong) AVAssetWriterInputPixelBufferAdaptor *pixelBufferAdaptor;
+
+@property (nonatomic, strong) NSString *screenRecordingName;
 
 @end

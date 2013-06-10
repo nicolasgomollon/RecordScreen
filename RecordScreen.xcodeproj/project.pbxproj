@@ -65,6 +65,7 @@
 		DA5C72851697E78F00623135 /* nav-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5C727D1697E78F00623135 /* nav-button@2x.png */; };
 		DA5C72891697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5C72881697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m */; };
 		DA5C728B1697E9D200623135 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5C728A1697E9D200623135 /* QuartzCore.framework */; };
+		DAA9495117653A60001A379C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DAA9495017653A60001A379C /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +158,7 @@
 		DA5C72871697E88100623135 /* NGTableViewCellDeleteConfirmationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGTableViewCellDeleteConfirmationControl.h; sourceTree = "<group>"; };
 		DA5C72881697E88100623135 /* NGTableViewCellDeleteConfirmationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGTableViewCellDeleteConfirmationControl.m; sourceTree = "<group>"; };
 		DA5C728A1697E9D200623135 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DAA9495017653A60001A379C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				DA5C724B1697924200623135 /* Fonts */,
 				DA5C71DB169704BC00623135 /* Images */,
 				DA5C71F3169704BC00623135 /* RecordScreen-Info.plist */,
+				DAA9495017653A60001A379C /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
@@ -512,6 +515,7 @@
 				DA5C72831697E78F00623135 /* nav-button-highlighted@2x.png in Resources */,
 				DA5C72841697E78F00623135 /* nav-button.png in Resources */,
 				DA5C72851697E78F00623135 /* nav-button@2x.png in Resources */,
+				DAA9495117653A60001A379C /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

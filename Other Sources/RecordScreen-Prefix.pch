@@ -18,4 +18,5 @@
 	#import "NSTimer+Blocks.h"
 	#import "MTStatusBarOverlay.h"
 	#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+	#define degreesToRadians(degrees) ((degrees) / 180.0 * M_PI)
 #endif

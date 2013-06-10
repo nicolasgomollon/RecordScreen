@@ -14,6 +14,7 @@
 @synthesize isRecording, recordingTimer, recordStartDate, audioRecorder;
 @synthesize surface, bytesPerRow, width, height;
 @synthesize video_queue, kbps, fps, pixelBufferLock, videoWriter, videoWriterInput, pixelBufferAdaptor;
+@synthesize screenRecordingName;
 
 
 - (id)init {
@@ -31,7 +32,7 @@
 	}
 	return self;
 }
-							
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
@@ -63,7 +64,7 @@
 	[self.recordButton setTag:0];
 	[self.view addSubview:self.recordButton];
 	
-// TODO: Change recordButton.frame depending on device.
+	// TODO: Change recordButton.frame depending on device.
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		
 	} else {
@@ -101,7 +102,6 @@
 
 - (void)startRecording {
 	NSString *audioPath = [self inDocumentsDirectory:@"audio.caf"];
-	[[NSFileManager defaultManager] removeItemAtPath:audioPath error:nil];
 	
 	if (!self.videoWriter) [self setupVideoContext];
 	self.recordStartDate = [NSDate date];
@@ -114,7 +114,8 @@
 	[[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
 	
 	NSError *error = nil;
-	NSDictionary *audioSettings = @{AVNumberOfChannelsKey : @2};
+	NSDictionary *audioSettings = @{AVNumberOfChannelsKey : @2, AVSampleRateKey : @44100.0f};
+	
 	self.audioRecorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:audioPath] settings:audioSettings error:&error];
 	[self.audioRecorder setDelegate:self];
 	[self.audioRecorder prepareToRecord];
@@ -195,19 +196,6 @@
 	
 	UITabBarItem *recordingsTabBarItem = [self.tabBarController.tabBar items][1];
 	[recordingsTabBarItem setEnabled:NO];
-	
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-	dispatch_async(queue, ^{
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[[NSFileManager defaultManager] removeItemAtPath:[self inDocumentsDirectory:@"audio.caf"] error:nil];
-			
-			[self.recordButton setEnabled:YES];
-			[recordingsTabBarItem setEnabled:YES];
-			
-			[self.statusBarOverlay postImmediateFinishMessage:@"Saved Recording!" duration:2.0 animated:YES];
-			[self.statusBarOverlay setProgress:1.0];
-		});
-	});
 	
 	self.recordStartDate = nil;
 	self.audioRecorder = nil;
@@ -300,9 +288,19 @@
 		self.height = screenRect.size.width * scale;
 	}
 	
+	int videoWidth = self.width;
+	int videoHeight = self.height;
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	if ([prefs objectForKey:@"videoSize"]) {
+		if (![[prefs objectForKey:@"videoSize"] boolValue]) {
+			videoWidth /= 2;
+			videoHeight /= 2;
+		}
+	}
+	
 	NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self inDocumentsDirectory:@""] error:nil];
-	NSString *videoName = [NSString stringWithFormat:@"ScreenRecording-%i.mp4", documents.count];
-	NSString *videoPath = [self inDocumentsDirectory:videoName];
+	self.screenRecordingName = [NSString stringWithFormat:@"ScreenRecording-%i.mp4", documents.count];
+	NSString *videoPath = [self inDocumentsDirectory:self.screenRecordingName];
 	
 	NSError *error = nil;
 	self.videoWriter = [[AVAssetWriter alloc] initWithURL:[NSURL fileURLWithPath:videoPath] fileType:AVFileTypeMPEG4 error:&error];
@@ -315,7 +313,7 @@
 	
 	NSDictionary *compressionProperties = @{AVVideoAverageBitRateKey : @(self.kbps * 1000), AVVideoMaxKeyFrameIntervalKey : @(self.fps), AVVideoProfileLevelKey : AVVideoProfileLevelH264Main41};
 	
-	NSDictionary *outputSettings = @{AVVideoCodecKey : AVVideoCodecH264, AVVideoWidthKey : @(self.width), AVVideoHeightKey : @(self.height), AVVideoCompressionPropertiesKey : compressionProperties};
+	NSDictionary *outputSettings = @{AVVideoCodecKey : AVVideoCodecH264, AVVideoWidthKey : @(videoWidth), AVVideoHeightKey : @(videoHeight), AVVideoCompressionPropertiesKey : compressionProperties};
 	
 	NSParameterAssert([self.videoWriter canApplyOutputSettings:outputSettings forMediaType:AVMediaTypeVideo]);
 	
@@ -336,15 +334,15 @@
 																							   sourcePixelBufferAttributes:bufferAttributes];
 	
 	// FPS
-	self.videoWriterInput.mediaTimeScale = self.fps;
-	self.videoWriter.movieTimeScale = self.fps;
+	[self.videoWriterInput setMediaTimeScale:self.fps];
+	[self.videoWriter setMovieTimeScale:self.fps];
 	
-	// Start a session:
+	// Start a session
 	[self.videoWriterInput setExpectsMediaDataInRealTime:YES];
 	[self.videoWriter startWriting];
 	[self.videoWriter startSessionAtSourceTime:kCMTimeZero];
 	
-// TODO: Hhmmm, seems to be crashing right here on the iPad.
+	// TODO: Hhmmm, seems to be crashing right here on the iPad.
 	NSParameterAssert(self.pixelBufferAdaptor.pixelBufferPool != NULL);
 }
 
@@ -356,7 +354,99 @@
 	self.videoWriterInput = nil;
 	self.pixelBufferAdaptor = nil;
 	
+	[self.statusBarOverlay setProgress:0.5];
+	[self addAudioTrackToRecording];
+	
 	NSLog(@"Done");
+}
+
+- (void)addAudioTrackToRecording {
+	double degrees = 0.0;
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	if ([prefs objectForKey:@"videoOrientation"])
+		degrees = [[prefs objectForKey:@"videoOrientation"] doubleValue];
+	
+	NSString *videoPath = [self inDocumentsDirectory:self.screenRecordingName];
+	NSString *audioPath = [self inDocumentsDirectory:@"audio.caf"];
+	
+	NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
+	NSURL *audioURL = [NSURL fileURLWithPath:audioPath];
+	
+	AVURLAsset *videoAsset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+	AVURLAsset *audioAsset = [[AVURLAsset alloc] initWithURL:audioURL options:nil];
+	
+	AVAssetTrack *assetVideoTrack = nil;
+	AVAssetTrack *assetAudioTrack = nil;
+	
+	if ([[NSFileManager defaultManager] fileExistsAtPath:videoPath])
+		assetVideoTrack = [videoAsset tracksWithMediaType:AVMediaTypeVideo][0];
+	
+	if ([[NSFileManager defaultManager] fileExistsAtPath:audioPath] && [prefs boolForKey:@"recordAudio"])
+		assetAudioTrack = [audioAsset tracksWithMediaType:AVMediaTypeAudio][0];
+	
+	AVMutableComposition *mixComposition = [AVMutableComposition composition];
+	
+	if (assetVideoTrack != nil) {
+		AVMutableCompositionTrack *compositionVideoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+		[compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:assetVideoTrack atTime:kCMTimeZero error:nil];
+		[compositionVideoTrack setPreferredTransform:CGAffineTransformMakeRotation(degreesToRadians(degrees))];
+	}
+	
+	if (assetAudioTrack != nil) {
+		AVMutableCompositionTrack *compositionAudioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+		[compositionAudioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, audioAsset.duration) ofTrack:assetAudioTrack atTime:kCMTimeZero error:nil];
+	}
+	
+	[self.statusBarOverlay setProgress:0.75];
+	
+	NSString *exportPath = [self inDocumentsDirectory:@"ScreenRecording.mov"];
+	NSURL *exportURL = [NSURL fileURLWithPath:exportPath];
+	
+	if ([[NSFileManager defaultManager] fileExistsAtPath:exportPath])
+		[[NSFileManager defaultManager] removeItemAtPath:exportPath error:nil];
+	
+	AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetPassthrough];
+	[exportSession setOutputFileType:AVFileTypeQuickTimeMovie];
+	[exportSession setOutputURL:exportURL];
+	[exportSession setShouldOptimizeForNetworkUse:NO];
+	
+	[exportSession exportAsynchronouslyWithCompletionHandler:^(void){
+		switch (exportSession.status) {
+			case AVAssetExportSessionStatusCompleted:{
+				[[NSFileManager defaultManager] removeItemAtPath:videoPath error:nil];
+				[[NSFileManager defaultManager] removeItemAtPath:audioPath error:nil];
+				
+				NSString *movieName = [self.screenRecordingName componentsSeparatedByString:@"."][0];
+				NSString *moviePath = [self inDocumentsDirectory:[NSString stringWithFormat:@"%@.mov", movieName]];
+				[[NSFileManager defaultManager] moveItemAtPath:exportPath toPath:moviePath error:nil];
+				break;
+			}
+				
+			case AVAssetExportSessionStatusFailed:
+				NSLog(@"Failed: %@", exportSession.error);
+				break;
+				
+			case AVAssetExportSessionStatusCancelled:
+				NSLog(@"Canceled: %@", exportSession.error);
+				break;
+				
+			default:
+				break;
+		}
+		
+		dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+		dispatch_async(queue, ^{
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self.recordButton setEnabled:YES];
+				
+				UITabBarItem *recordingsTabBarItem = [self.tabBarController.tabBar items][1];
+				[recordingsTabBarItem setEnabled:YES];
+				
+				[self.statusBarOverlay postImmediateFinishMessage:@"Saved Recording!" duration:2.0 animated:YES];
+				[self.statusBarOverlay setProgress:1.0];
+			});
+		});
+	}];
 }
 
 
