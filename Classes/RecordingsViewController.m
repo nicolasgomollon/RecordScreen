@@ -10,7 +10,7 @@
 
 @implementation RecordingsViewController
 
-@synthesize footerLabel;
+@synthesize footerLabel, interactionController;
 
 
 - (id)init {
@@ -245,11 +245,8 @@
 	NSString *filePath = file[@"filePath"];
 	NSURL *fileURL = [NSURL fileURLWithPath:filePath];
 	
-	NSArray *activityItems = @[fileURL];
-	
-	UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-	[activityViewController setExcludedActivityTypes:@[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint]];
-	[self presentViewController:activityViewController animated:YES completion:nil];
+	self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+	[self.interactionController presentOptionsMenuFromRect:[tableView cellForRowAtIndexPath:indexPath].frame inView:self.view animated:YES];
 }
 
 @end

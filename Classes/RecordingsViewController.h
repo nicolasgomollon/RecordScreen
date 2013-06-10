@@ -12,8 +12,10 @@
 
 @interface RecordingsViewController : UITableViewController {
 	UILabel *footerLabel;
+	UIDocumentInteractionController *interactionController;
 }
 
 @property (nonatomic, strong) UILabel *footerLabel;
+@property (nonatomic, strong) UIDocumentInteractionController *interactionController;
 
 @end
